@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="notesApp">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+	{{ctrl.msg}} Angular
+	<button ng-click="ctrl.changeMeg()">Change Message</button>
+</body>
+<script type="text/javascript">
+	angular.module('notesApp',[]).controller('MainCtrl',[function(){
+		var self = this;
+		var tag = false;
+		self.msg = "Hello";
+		self.changeMeg = function(){
+			if(tag){
+				self.msg = "Hello";
+				tag = false;
+			}else{
+				self.msg = "Goodbye";
+				tag = true;
+			}
+		}
+	}]);
+</script>
+</html>

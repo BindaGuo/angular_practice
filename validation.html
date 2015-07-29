@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="bindaApp">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+	<style>
+		.name.ng-valid{
+			background-color: green;
+		}
+		.name.ng-invalid{
+			background-color: red;
+		}
+	</style>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+	<form ng-submit="ctrl.submit()" name="myForm">
+		<input type="text" class="name" name="name" 
+		ng-model="ctrl.user.username" 
+		ng-minlength="5" 
+		ng-maxlength="10" 
+		ng-pattern="/^[0-9a-zA-Z]{5,10}$/" 
+		required>
+		
+		<span ng-show="myForm.name.$error.minlength">
+			Minimum length required is 5.
+		</span>
+		<span ng-show="myForm.name.$error.minlength">
+			Maximum length maxlength is 10.
+		</span>
+		<span ng-show="myForm.name.$error.pattern">
+			Name required include number,Lowercase,Uppercase.
+		</span>
+		<span ng-show="myForm.name.$valid">
+			This field is valid.
+		</span>
+		<input type="password" name="password" ng-model="ctrl.user.password" required>
+		<span ng-show="myForm.password.$error.required">
+			This field is a required field.
+		</span>
+		<input type="submit" value="Submit" ng-disabled="myForm.$invalid">
+	</form>
+</body>
+<script type="text/javascript">
+	angular.module('bindaApp', []).controller('MainCtrl', [function(){
+		var self = this;
+		self.submit = function(){
+			console.log("User form is ", self.user);
+		}
+	}]);
+</script>
+</html>

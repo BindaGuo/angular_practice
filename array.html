@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="bindaApp">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+	<table>
+		<thead>
+			<th>id</th>
+			<th>label</th>
+			<th>color</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="book in ctrl.books">
+				<td>{{ book.id }}</td>
+				<td>{{ book.label }}</td>
+				<td>{{ book.color }}</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+<script type="text/javascript">
+	angular.module('bindaApp', []).controller('MainCtrl', [function(){
+		var self = this;
+		self.books = [
+		{id: 1, label: 'First Book', color: 'yellow'},
+		{id: 2, label: 'Second Book', color: 'red'},
+		{id: 3, label: 'Third Book', color: 'blue'},
+		{id: 4, label: 'Last Book', color: 'black'}
+		];
+	}]);
+</script>
+</html>
